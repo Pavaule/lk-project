@@ -6,7 +6,9 @@ authors = ["paul <maillefer.paul@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.11"
+pandas = "^2.2.3"
+polars = "^1.11.0"
 
 
 [build-system]
