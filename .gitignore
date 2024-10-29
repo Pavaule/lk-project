@@ -168,3 +168,4 @@ data/
 *.csv
 *.xlsx
 *.txt
+.envrc
