@@ -12,7 +12,7 @@ polars = "^1.11.0"
 dbt-bigquery = "^1.8"
 requests = "^2.32.3"
 python-dateutil = "^2.9.0.post0"
-
+apache-airflow = "^2.3.0"
 
 [build-system]
 requires = ["poetry-core"]
