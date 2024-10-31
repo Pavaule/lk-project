@@ -1,0 +1,30 @@
+# A utiliser plus tard en V2
+
+
+# Utilise une image de base Python compatible avec dbt
+FROM python:3.11-slim
+
+# Définir un répertoire de travail
+WORKDIR /app
+
+# Installer Poetry
+RUN apt-get update && apt-get install -y curl && apt-get clean
+RUN curl -sSL https://install.python-poetry.org | python3 -
+
+# Ajouter le chemin Poetry à PATH (nécessaire pour utiliser la commande poetry)
+ENV PATH="/root/.local/bin:$PATH"
+
+# Copier les fichiers nécessaires (pyproject.toml et poetry.lock pour gérer les dépendances)
+COPY pyproject.toml poetry.lock /app/
+
+# Installer les dépendances via Poetry
+RUN poetry config virtualenvs.create false && poetry install --no-root
+
+# Copier le reste des fichiers du projet dans le conteneur
+COPY . /app
+
+# Ajouter bash et autres outils nécessaires (en option)
+RUN apt-get update && apt-get install -y bash && apt-get clean
+
+# Définir la commande par défaut
+CMD ["dbt", "--help"]
