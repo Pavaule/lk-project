@@ -169,3 +169,6 @@ data/
 *.csv
 *.xlsx
 *.txt
+
+# fichier credentials pour pousser données dans bucket gcp
+airflow/config/*.json

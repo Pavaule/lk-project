@@ -6,13 +6,14 @@ authors = ["paul <maillefer.paul@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = ">=3.9,<= 3.11.10"
 pandas = "^2.2.3"
 polars = "^1.11.0"
 dbt-bigquery = "^1.8"
 requests = "^2.32.3"
 python-dateutil = "^2.9.0.post0"
-apache-airflow = "^2.5.0"
+apache-airflow = {version = "^2.5.0", extras = ["gcp"]}
+apache-airflow-providers-google = "*"
 dbt-core = "1.8"
 python-dotenv = "^1.0.1"
 dbt-duckdb = "^1.9.0"
