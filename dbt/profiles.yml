@@ -1,20 +1,20 @@
-#bt_project:
-#  target: dev
-#  outputs:
-#    dev:
-#      type: bigquery
-#      method: service-account
-#      project: "ton_projet_gcp"
-#      keyfile: "/chemin/vers/ton/fichier/service_account_key.json"
-#      dataset: "ton_dataset"
-#      threads: 4
-#      timeout_seconds: 300
-
-
 dbt_project:
   target: dev
   outputs:
     dev:
-      type: duckdb
-      path: ":memory:"  # Utiliser une base de données en mémoire pour compiler les modèles
-      threads: 1
+      type: bigquery
+      method: service-account
+      project: banded-torus-434621-q0
+      keyfile: ./banded-torus-434621-q0-1e5ff2039c4e.json
+      dataset: brouillon
+      threads: 4
+      timeout_seconds: 300
+
+
+#dbt_project:
+#  target: dev
+#  outputs:
+#    dev:
+#      type: duckdb
+#      path: ":memory:"  # Utiliser une base de données en mémoire pour compiler les modèles
+#      threads: 1
