@@ -32,23 +32,5 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   dbt_project:
     # Config indicated by + and applies to all files under models/example/
-  - name: deliveroo_weekly_rate_conversion
-    description: "Weekly conversion rate and customer retention for Deliveroo"
-    columns:
-      - name: restaurant_id
-        description: "Unique identifier for the restaurant"
-      - name: starting_date
-        description: "Start date of the weekly period"
-      - name: ending_date
-        description: "End date of the weekly period"
-      - name: conversion_rate
-        description: "Conversion rate for the weekly period"
-    source-paths: ["models/bronze"]
-    target: bronze
-
-
-sources:
-  - name: deliveroo
-    tables:
-      - name: deliveroo_weekly_conversion_rate_and_customer_retention
-        description: "Weekly conversion rate and customer retention for Deliveroo"
+    example:
+      +materialized: view
