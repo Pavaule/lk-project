@@ -8,27 +8,16 @@ def run_scraping():
     load_dotenv()
 
     cookies = {
-        'udi-id': os.getenv('UDI_ID'),
-        '_cc': os.getenv('CC'),
-        '_cid_cc': os.getenv('CID_CC'),
-        'marketing_vistor_id': os.getenv('MARKETING_VISITOR_ID'),
-        # Ajoutez les autres cookies ici...
+        'sid': os.getenv('SID'),
     }
-
     headers = {
-        'accept': os.getenv('ACCEPT'),
-        'accept-language': os.getenv('ACCEPT_LANGUAGE'),
-        'content-type': os.getenv('CONTENT_TYPE'),
-        # Ajoutez les autres headers ici..
+        'x-csrf-token': os.getenv('X_CSRF_TOKEN'),
     }
-
     # Première requête pour obtenir les restaurants
     json_data = {
         'operationName': 'GetBrandStores',
         'variables': {},
-        'query': 'fragment brandFragment on OnlineOrderingBrand { uuid name url isAdmin __typename }'
-                 'fragment storeFragment on OnlineOrderingStore { uuid name url brandUUID optedIn __typename }'
-                 'query GetBrandStores { getOnlineOrderingBrandStores { brands { ...brandFragment } stores { ...storeFragment } } }'
+        'query': 'fragment brandFragment on OnlineOrderingBrand {\n  uuid\n  name\n  url\n  isAdmin\n  __typename\n}\n\nfragment storeFragment on OnlineOrderingStore {\n  uuid\n  name\n  url\n  brandUUID\n  optedIn\n  __typename\n}\n\nfragment feeFragment on OnlineOrderingFee {\n  deliveryFee\n  thirdPartyDeliveryFee\n  pickupFee\n  dineInFee\n  __typename\n}\n\nquery GetBrandStores {\n  getOnlineOrderingBrandStores {\n    brands {\n      ...brandFragment\n      __typename\n    }\n    stores {\n      ...storeFragment\n      __typename\n    }\n    __typename\n  }\n  getSelectedStore {\n    fees {\n      ...feeFragment\n      __typename\n    }\n    __typename\n  }\n}\n',
     }
 
     response = requests.post('https://merchants.ubereats.com/manager/graphql', cookies=cookies, headers=headers, json=json_data)
@@ -71,7 +60,7 @@ def run_scraping():
                 ads = {
                     'Restaurant': nom,
                     'Uuid': uuid,
-                    'Credits restants low': data.get('availableCredits', {}).get('amountE5', 0) / 100000,
+                    'Credits restants low': data.get('availableCredits').get('amountE5').get('low')/100000,
                     'Date expiration': data.get('availableCreditsExpirationDateTime')
                 }
 
