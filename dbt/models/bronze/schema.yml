@@ -1,0 +1,39 @@
+version: 2
+
+models:
+  - name: brz_deliveroo_weekly_rate_conversion
+    description: "Données brutes de conversion Deliveroo"
+    columns:
+      - name: restaurant_id
+        description: "Identifiant unique du restaurant"
+        tests:
+          - not_null
+      - name: starting_date
+        description: "Date de la semaine"
+        tests:
+          - not_null
+      - name: starting_date
+        description: "Fin de la semaine"
+        tests:
+          - not_null
+      - name: conversion_rate_order_count_divide_by_menu_view_count
+        description: "Taux de conversion hebdomadaire du restaurant"
+
+  - name: brz_uber_menu_weekly_rate_conversion
+    description: "Données brutes de conversion Uber"
+    columns:
+      - name: restaurantUuid
+        description: "Identifiant unique du restaurant"
+        tests:
+          - not_null
+      - name: weekStart
+        description: "Début de la semaine"
+        tests:
+          - not_null
+      - name: weekEnd
+        description: "Fin de la semaine"
+        tests:
+          - not_null
+
+  - name: brz_customer_table
+    description: "Table des restaurants virtuels de LK"

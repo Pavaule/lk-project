@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: gld_global_conversion_rate
+    description: "Métriques globales de conversion par restaurant"
+    columns:
+      - name: UUID
+        description: "Identifiant unique du restaurant"
+        tests:
+          - not_null
+      - name: avg_conversion_rate
+        description: "Taux de conversion moyen du restaurant"
+
+  - name: gld_weekly_conversion_rates
+    description: "Taux de conversion hebdomadaires avec moyennes globales"
+    columns:
+      - name: weekStart
+        description: "Date de début de la semaine"
+      - name: conversion_rate
+        description: "Taux de conversion du restaurant"
