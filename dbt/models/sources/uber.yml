@@ -5,3 +5,5 @@ sources:
     database: banded-torus-434621-q0
     tables:
       - name: deliveroo_weekly_conversion_rate_and_customer_retention
+      - name: uber_menu_weekly_rate_conversion
+      - name: customer_table

@@ -1,0 +1,10 @@
+version: 2
+
+models:
+  - name: slv_all_platform_conversion_rate
+    description: "Données de conversion standardisées pour toutes les plateformes"
+    columns:
+      - name: restaurant_id
+        description: "Identifiant unique du restaurant"
+        tests:
+          - not_null
