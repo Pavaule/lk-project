@@ -6,58 +6,11 @@ import pandas as pd
 import os
 
 cookies = {
-    'udi-id': UDI_ID,
-    '_cc': CC,
-    '_cid_cc': CID_CC,
-    'marketing_vistor_id': MARKETING_VISITOR_ID,
-    'uber_sites_geolocalization': UBER_SITES_GEOLOCALIZATION,
-    'segmentCookie': SEGMENT_COOKIE,
-    'utag_main_segment': UTAG_MAIN_SEGMENT,
-    'utag_main_optimizely_segment': UTAG_MAIN_OPTIMIZELY_SEGMENT,
-    'dId': DID,
-    'uev2.gdprAdsConsented': UEV2_GDPR_ADS_CONSENTED,
-    'uev2.gg': UEV2_GG,
-    'CONSENTMGR': CONSENT_MGR,
-    '_scid': SCID,
-    '_fbp': FBP,
-    '_tt_enable_cookie': TT_ENABLE_COOKIE,
-    '_ttp': TTP,
-    '_yjsu_yjad': YJSU_YJAD,
-    'uev2.diningMode': UEV2_DINING_MODE,
-    '_gcl_au': GCL_AU,
-    '_clck': CLCK,
-    '_scid_r': SCID_R,
-    '_ga': GA,
-    'uev2.loc': UEV2_LOC,
-    'utag_main__sn': UTAG_MAIN_SN,
-    '_uetvid': UETVID,
-    '_ga_P1RM71MPFP': GA_P1RM71MPFP,
-    'jwt-session-uem': JWT_SESSION_UEM,
-    'sid': SID,
-    '_ua': UA,
-    'selectedRestaurant': SELECTED_RESTAURANT,
-    'udi-fingerprint': UDI_FINGERPRINT,
-    'user_city_ids': USER_CITY_IDS,
-    'jwt-session': JWT_SESSION,
-    'mp_adec770be288b16d9008c964acfba5c2_mixpanel': MP_ADEC770BE288B16D9008C964ACFBA5C2_MIXPANEL,
-}
-
+        'sid': os.getenv('SID'),
+    }
 headers = {
-    'accept': ACCEPT,
-    'accept-language': ACCEPT_LANGUAGE,
-    'content-type': CONTENT_TYPE,
-    'origin': ORIGIN,
-    'priority': PRIORITY,
-    'referer': REFERER,
-    'sec-ch-ua': SEC_CH_UA,
-    'sec-ch-ua-mobile': SEC_CH_UA_MOBILE,
-    'sec-ch-ua-platform': SEC_CH_UA_PLATFORM,
-    'sec-fetch-dest': SEC_FETCH_DEST,
-    'sec-fetch-mode': SEC_FETCH_MODE,
-    'sec-fetch-site': SEC_FETCH_SITE,
-    'user-agent': USER_AGENT,
-    'x-csrf-token': X_CSRF_TOKEN,
-}
+        'x-csrf-token': os.getenv('X_CSRF_TOKEN'),
+    }
 
 json_data = {
     'operationName': 'GetBrandStores',

@@ -7,58 +7,11 @@ from dotenv import load_dotenv
 load_dotenv()
 
 cookies = {
-    'udi-id': os.getenv('UDI_ID'),
-    '_cc': os.getenv('CC'),
-    '_cid_cc': os.getenv('CID_CC'),
-    'marketing_vistor_id': os.getenv('MARKETING_VISITOR_ID'),
-    'uber_sites_geolocalization': os.getenv('UBER_SITES_GEOLOCALIZATION'),
-    'segmentCookie': os.getenv('SEGMENT_COOKIE'),
-    'utag_main_segment': os.getenv('UTAG_MAIN_SEGMENT'),
-    'utag_main_optimizely_segment': os.getenv('UTAG_MAIN_OPTIMIZELY_SEGMENT'),
-    'dId': os.getenv('DID'),
-    'uev2.gdprAdsConsented': os.getenv('UEV2_GDPR_ADS_CONSENTED'),
-    'uev2.gg': os.getenv('UEV2_GG'),
-    'CONSENTMGR': os.getenv('CONSENT_MGR'),
-    '_scid': os.getenv('SCID'),
-    '_fbp': os.getenv('FBP'),
-    '_tt_enable_cookie': os.getenv('TT_ENABLE_COOKIE'),
-    '_ttp': os.getenv('TTP'),
-    '_yjsu_yjad': os.getenv('YJSU_YJAD'),
-    'uev2.diningMode': os.getenv('UEV2_DINING_MODE'),
-    '_gcl_au': os.getenv('GCL_AU'),
-    '_clck': os.getenv('CLCK'),
-    '_scid_r': os.getenv('SCID_R'),
-    '_ga': os.getenv('GA'),
-    'uev2.loc': os.getenv('UEV2_LOC'),
-    'utag_main__sn': os.getenv('UTAG_MAIN_SN'),
-    '_uetvid': os.getenv('UETVID'),
-    '_ga_P1RM71MPFP': os.getenv('GA_P1RM71MPFP'),
-    'jwt-session-uem': os.getenv('JWT_SESSION_UEM'),
-    'sid': os.getenv('SID'),
-    '_ua': os.getenv('UA'),
-    'selectedRestaurant': os.getenv('SELECTED_RESTAURANT'),
-    'udi-fingerprint': os.getenv('UDI_FINGERPRINT'),
-    'user_city_ids': os.getenv('USER_CITY_IDS'),
-    'jwt-session': os.getenv('JWT_SESSION'),
-    'mp_adec770be288b16d9008c964acfba5c2_mixpanel': os.getenv('MP_ADEC770BE288B16D9008C964ACFBA5C2_MIXPANEL'),
-}
-
+        'sid': os.getenv('SID'),
+    }
 headers = {
-    'accept': os.getenv('ACCEPT'),
-    'accept-language': os.getenv('ACCEPT_LANGUAGE'),
-    'content-type': os.getenv('CONTENT_TYPE'),
-    'origin': os.getenv('ORIGIN'),
-    'priority': os.getenv('PRIORITY'),
-    'referer': os.getenv('REFERER'),
-    'sec-ch-ua': os.getenv('SEC_CH_UA'),
-    'sec-ch-ua-mobile': os.getenv('SEC_CH_UA_MOBILE'),
-    'sec-ch-ua-platform': os.getenv('SEC_CH_UA_PLATFORM'),
-    'sec-fetch-dest': os.getenv('SEC_FETCH_DEST'),
-    'sec-fetch-mode': os.getenv('SEC_FETCH_MODE'),
-    'sec-fetch-site': os.getenv('SEC_FETCH_SITE'),
-    'user-agent': os.getenv('USER_AGENT'),
-    'x-csrf-token': os.getenv('X_CSRF_TOKEN'),
-}
+        'x-csrf-token': os.getenv('X_CSRF_TOKEN'),
+    }
 
 json_data = {
     'operationName': 'GetBrandStores',
