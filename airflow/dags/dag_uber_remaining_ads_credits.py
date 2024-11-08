@@ -3,6 +3,7 @@ from airflow.operators.python import PythonOperator
 from airflow.providers.google.cloud.hooks.gcs import GCSHook
 from airflow.utils.dates import days_ago
 from datetime import timedelta
+from datetime import datetime
 import os
 
 # Importer votre fonction de scraping
@@ -27,23 +28,39 @@ dag = DAG(
 )
 
 def execute_scraping(**kwargs):
-    df_final = run_scraping()
-    output_path = "/tmp/uber_ads_results.csv"
-    df_final.to_csv(output_path, index=False)
+    try:
+        print("Début de l'exécution...")
 
-    gcs_hook = GCSHook(gcp_conn_id='google_cloud_default')
-    bucket_name = 'airflow-results-bucket'
-    object_name = 'uber_ads_results/uber_ads_results.csv'
+        print("Début du scraping...")
+        df_final = run_scraping()
+        print(f"Scraping terminé. Taille du DataFrame : {len(df_final)}")
+        print("Création du fichier CSV...")
+        output_path = "/tmp/uber_ads_remaining.csv"
+        df_final.to_csv(output_path, index=False)
+        print(f"Fichier CSV créé : {output_path}")
 
-    gcs_hook.upload(
-        bucket_name=bucket_name,
-        object_name=object_name,
-        filename=output_path,
-        mime_type='text/csv'
-    )
+        print("Upload vers GCS...")
 
-    os.remove(output_path)
-    print(f"Les résultats ont été sauvegardés dans GCS : gs://{bucket_name}/{object_name}")
+        gcs_hook = GCSHook(gcp_conn_id='google_cloud_default')
+        bucket_name = 'trou-test'
+        object_name = 'uber/uber_ads_remaining.csv'
+
+        gcs_hook.upload(
+            bucket_name=bucket_name,
+            object_name=object_name,
+            filename=output_path,
+            mime_type='text/csv'
+        )
+
+        print("Upload terminé avec succès")
+
+        os.remove(output_path)
+        print(f"Les résultats ont été sauvegardés dans GCS : gs://{bucket_name}/{object_name}")
+
+    except Exception as e:
+        print(f"Erreur dans execute_scraping : {str(e)}")
+        print(f"Type d'erreur : {type(e)}")
+        raise
 
 scraping_task = PythonOperator(
     task_id='execute_scraping',
